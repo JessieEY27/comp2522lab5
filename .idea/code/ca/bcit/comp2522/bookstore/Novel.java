@@ -5,21 +5,24 @@ public class Novel {
     private final String authorName;
     private final int yearPublished;
 
-    public Novel(String title, String authorName, int yearPublished) {
+    public Novel(String title,
+                 String authorName,
+                 int yearPublished)
+    {
         this.title = title;
         this.authorName = authorName;
         this.yearPublished = yearPublished;
     }
 
-    public String getTitle(final String title){
+    public String getTitle(){
         return title;
     }
 
-    public String getAuthorName(final String authorName){
+    public String getAuthorName(){
         return authorName;
     }
 
-    public int getYearPublished(final int yearPublished){
+    public int getYearPublished(){
         return yearPublished;
     }
 }
