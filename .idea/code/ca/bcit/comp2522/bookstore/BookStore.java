@@ -166,7 +166,7 @@ public class BookStore implements Comparable<BookStore> {
      *
      * @param decade the decade the books were published
      */
-    public void printGroupByDecade(int decade)
+    public void printGroupByDecade(final int decade)
     {
         int startYear = decade;
         int endYear = decade + DECADE_ADDER;
@@ -217,7 +217,7 @@ public class BookStore implements Comparable<BookStore> {
      * @param year the publication year
      * @return whether there is book published that year
      */
-    public boolean isThereABookWrittenIn(int year)
+    public boolean isThereABookWrittenIn(final int year)
     {
         for(Novel n : novelReferences)
         {
@@ -235,7 +235,7 @@ public class BookStore implements Comparable<BookStore> {
      * @param word the word to look for in the book title
      * @return the number of books containing that word in its title
      */
-    public int howManyBooksContain(String word)
+    public int howManyBooksContain(final String word)
     {
         int count = COUNTER_START;
         String lowerWord = word.toLowerCase();
@@ -259,7 +259,9 @@ public class BookStore implements Comparable<BookStore> {
      * @param lastYear the last year in the range
      * @return the percentage of books written in that range of years
      */
-    public double whichPercentWrittenBetween(int firstYear, int lastYear) {
+    public double whichPercentWrittenBetween(final int firstYear,
+                                             final int lastYear)
+    {
         if(novelReferences.isEmpty())
         {
             return PERCENT_ZERO;
