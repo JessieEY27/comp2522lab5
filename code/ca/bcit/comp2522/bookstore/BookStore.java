@@ -11,19 +11,20 @@ import java.util.Collections;
  * @author Jeevan Jandu
  * @version 1
  */
-public class BookStore implements Comparable<BookStore> {
-
-    private final String bookStoreName;
-    private final List<Novel> novelReferences;
-
-    final int INDEX_ZERO = 0;
+public class BookStore implements Comparable<BookStore>
+{
+    final int FIRST_BOOK = 0;
     final int LOOP_START_SPOT = 1;
     final int DECADE_ADDER = 9;
     final int COUNTER_START = 0;
     final double PERCENT_ZERO = 0.0;
     final double PERCENT_MULTIPLIER = 100.0;
 
-    public BookStore(final String bookStoreName) {
+    private final String bookStoreName;
+    private final List<Novel> novelReferences;
+
+    public BookStore(final String bookStoreName)
+    {
         this.bookStoreName = bookStoreName;
         this.novelReferences = new ArrayList<>();
 
@@ -119,7 +120,7 @@ public class BookStore implements Comparable<BookStore> {
      */
     public void printAllTitles()
     {
-        for(Novel n : novelReferences)
+        for(final Novel n : novelReferences)
         {
             System.out.println(n.getTitle().toUpperCase());
         }
@@ -132,7 +133,7 @@ public class BookStore implements Comparable<BookStore> {
      */
     public void printBookTitle(final String title)
     {
-        for(Novel n : novelReferences)
+        for(final Novel n : novelReferences)
         {
             if(n.getTitle().toLowerCase().contains(title.toLowerCase()))
             {
@@ -146,16 +147,17 @@ public class BookStore implements Comparable<BookStore> {
      */
     public void printTitlesInAlphaOrder()
     {
-        List<String> titles = new ArrayList<>();
+        final List<String> titles;
+        titles = new ArrayList<>();
 
-        for(Novel n : novelReferences)
+        for(final Novel n : novelReferences)
         {
             titles.add(n.getTitle());
         }
 
         Collections.sort(titles);
 
-        for(String t : titles)
+        for(final String t : titles)
         {
             System.out.println(t);
         }
@@ -168,12 +170,17 @@ public class BookStore implements Comparable<BookStore> {
      */
     public void printGroupByDecade(final int decade)
     {
-        int startYear = decade;
-        int endYear = decade + DECADE_ADDER;
+        final int startYear;
+        final int endYear;
 
-        for(Novel n : novelReferences)
+        startYear = decade;
+        endYear = decade + DECADE_ADDER;
+
+        for(final Novel n : novelReferences)
         {
-            int year = n.getYearPublished();
+            final int year;
+            year = n.getYearPublished();
+
             if(year >= startYear &&
                     year <= endYear)
             {
@@ -185,29 +192,24 @@ public class BookStore implements Comparable<BookStore> {
 
     /**
      * Finds the longest titles in the bookstore.
-     *
-     * @return the book title that is the longest
      */
-    public String getLongest()
+    public void getLongest()
     {
-        if(novelReferences.isEmpty())
-        {
-            return "No books in this bookstore";
-        }
-
-        Novel longest = novelReferences.get(INDEX_ZERO);
+        Novel longest;
+        longest = novelReferences.get(FIRST_BOOK);
 
         for(int i = LOOP_START_SPOT; i < novelReferences.size(); i++)
         {
-            Novel currentNovel = novelReferences.get(i);
+            final Novel currentNovel;
+            currentNovel = novelReferences.get(i);
+
             if(currentNovel.getTitle().length() >
                     longest.getTitle().length())
             {
                 longest = currentNovel;
+                System.out.println(longest.getTitle());
             }
         }
-
-        return longest.getTitle();
     }
 
     /**
@@ -219,7 +221,7 @@ public class BookStore implements Comparable<BookStore> {
      */
     public boolean isThereABookWrittenIn(final int year)
     {
-        for(Novel n : novelReferences)
+        for(final Novel n : novelReferences)
         {
             if(n.getYearPublished() == year)
             {
@@ -237,12 +239,17 @@ public class BookStore implements Comparable<BookStore> {
      */
     public int howManyBooksContain(final String word)
     {
-        int count = COUNTER_START;
-        String lowerWord = word.toLowerCase();
+        int count;
+        final String lowerWord;
 
-        for (Novel n : novelReferences)
+        count = COUNTER_START;
+        lowerWord = word.toLowerCase();
+
+        for(final Novel n : novelReferences)
         {
-            String title = n.getTitle().toLowerCase();
+            final String title;
+
+            title = n.getTitle().toLowerCase();
             if(title.contains(lowerWord))
             {
                 count++;
@@ -267,12 +274,15 @@ public class BookStore implements Comparable<BookStore> {
             return PERCENT_ZERO;
         }
 
-        int count = COUNTER_START;
+        int count;
+        count = COUNTER_START;
 
-        for(Novel n : novelReferences)
+        for(final Novel n : novelReferences)
         {
-            int year = n.getYearPublished();
-            if (year >= firstYear && year <= lastYear)
+            final int year;
+            year = n.getYearPublished();
+            if(year >= firstYear &&
+                    year <= lastYear)
             {
                 count++;
             }
@@ -293,12 +303,15 @@ public class BookStore implements Comparable<BookStore> {
             return null;
         }
 
-        Novel oldestBook = novelReferences.get(INDEX_ZERO);
+        Novel oldestBook;
+        oldestBook = novelReferences.get(FIRST_BOOK);
 
         for(int i = LOOP_START_SPOT; i < novelReferences.size(); i++)
         {
-            Novel currentNovel = novelReferences.get(i);
-            if(currentNovel.getYearPublished() < oldestBook.getYearPublished()) {
+            final Novel currentNovel;
+            currentNovel = novelReferences.get(i);
+            if(currentNovel.getYearPublished() < oldestBook.getYearPublished())
+            {
                 oldestBook = currentNovel;
             }
         }
@@ -312,11 +325,12 @@ public class BookStore implements Comparable<BookStore> {
      * @param titleLength the length of a book title
      * @return the list of books with a certain title length
      */
-    public List<Novel> getBooksThisLength(int titleLength)
+    public List<Novel> getBooksThisLength(final int titleLength)
     {
-        List<Novel> amountBooks = new ArrayList<>();
+        final List<Novel> amountBooks;
+        amountBooks = new ArrayList<>();
 
-        for(Novel n : novelReferences)
+        for(final Novel n : novelReferences)
         {
             if(n.getTitle().length() == titleLength)
             {
@@ -346,6 +360,7 @@ public class BookStore implements Comparable<BookStore> {
         final BookStore bookstore;
         final Novel oldest;
         final List<Novel> fifteenCharTitles;
+
         bookstore = new BookStore("Classic Novels Collection");
         System.out.println("All Titles in UPPERCASE:");
         bookstore.printAllTitles();

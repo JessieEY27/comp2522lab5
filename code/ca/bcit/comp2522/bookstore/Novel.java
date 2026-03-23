@@ -9,12 +9,12 @@ package ca.bcit.comp2522.bookstore;
  */
 public class Novel
 {
+    public static final int MIN_PUBLICATION_YEAR = 1900;
+    public static final int MAX_PUBLICATION_YEAR = 2010;
+
     private final String title;
     private final String authorName;
     private final int yearPublished;
-
-    public static final int MIN_PUBLICATION_YEAR = 1900;
-    public static final int MAX_PUBLICATION_YEAR = 2010;
 
     /**
      * Constructs a Novel.
@@ -22,9 +22,9 @@ public class Novel
      * @param authorName novel's author name
      * @param yearPublished novel's publication year
      */
-    public Novel(String title,
-                 String authorName,
-                 int yearPublished)
+    public Novel(final String title,
+                 final String authorName,
+                 final int yearPublished)
     {
         this.title = validateTitle(title);
         this.authorName = validateAuthorName(authorName);
@@ -37,7 +37,7 @@ public class Novel
      * @param title the novel's title
      * @return title of novel
      */
-    private static String validateTitle(String title)
+    private static String validateTitle(final String title)
     {
         if(title == null ||
                 title.trim().isEmpty())
@@ -53,7 +53,7 @@ public class Novel
      * @param authorName the author's name
      * @return name of author
      */
-    private static String validateAuthorName(String authorName)
+    private static String validateAuthorName(final String authorName)
     {
         if(authorName == null ||
                 authorName.trim().isEmpty())
@@ -69,7 +69,7 @@ public class Novel
      * @param year the year of novel's publication
      * @return novel's publication year
      */
-    private static int validatePublicationYear(int year)
+    private static int validatePublicationYear(final int year)
     {
         if(year < MIN_PUBLICATION_YEAR ||
                 year > MAX_PUBLICATION_YEAR)

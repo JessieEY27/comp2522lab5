@@ -8,6 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Represents a BookShop object.
+ *
+ * @author Jessie Yuen
+ * @author Jeevan Jandu
+ * @version 1
+ */
 public class BookShop
 {
     /**
@@ -132,11 +139,14 @@ public class BookShop
         System.out.println("Bookshop: " + name);
 
         System.out.println("All titles (via Iterator):");
+
         final Set<String> keySet;
         keySet = map.keySet();
+
         final Iterator<String> iterator;
         iterator = keySet.iterator();
-        while (iterator.hasNext())
+
+        while(iterator.hasNext())
         {
             final String key;
             key = iterator.next();
@@ -146,22 +156,26 @@ public class BookShop
 
         final Iterator<String> removeIterator;
         removeIterator = map.keySet().iterator();
-        while (removeIterator.hasNext())
+
+        while(removeIterator.hasNext())
         {
             final String key;
             key = removeIterator.next();
-            if (key.toLowerCase().contains("the"))
+
+            if(key.toLowerCase().contains("the"))
             {
                 removeIterator.remove();
             }
         }
 
         System.out.println("Remaining novels (no titles containing 'the'), sorted:");
+
         final Set<String> remainingKeySet = map.keySet();
         final List<String> keyList;
         keyList = new ArrayList<>(remainingKeySet);
+
         Collections.sort(keyList);
-        for (final String key : keyList)
+        for(final String key : keyList)
         {
             System.out.println(map.get(key));
         }
